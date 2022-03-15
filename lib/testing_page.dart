@@ -88,6 +88,14 @@ class _TestingState extends State<TestingPage> {
             ),
             MaterialButton(
               onPressed: () {
+                _scannerController?.startCameraFront();
+              },
+              textColor: Colors.white,
+              color: Colors.blue,
+              child: Text("Start Front camera"),
+            ),
+            MaterialButton(
+              onPressed: () {
                 _startPreview();
               },
               textColor: Colors.white,
