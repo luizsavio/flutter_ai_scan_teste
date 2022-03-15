@@ -39,6 +39,7 @@ dependencies:
   airoute: ^2.2.0
   ai_awesome_message: ^2.2.0
   air_design: ^2.2.0
+  flutter_beep: ^1.0.0
 
 dev_dependencies:
   flutter_test:

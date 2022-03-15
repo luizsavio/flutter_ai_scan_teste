@@ -52,7 +52,7 @@ class _AppState extends State<App> {
                   children: [
                     MaterialButton(
                       onPressed: () {
-                        //跳转页面=扫描二维码
+                        //Pular página = escanear o código QR
                         Airoute.pushNamed(
                           routeName: "/SelectScannerStylePage",
                         );
@@ -72,7 +72,7 @@ class _AppState extends State<App> {
                   children: [
                     MaterialButton(
                       onPressed: () {
-                        //跳转页面=生成二维码
+                        //Página de salto = gerar código QR
                         Airoute.pushNamed(
                           routeName: "/CreatorPage",
                         );

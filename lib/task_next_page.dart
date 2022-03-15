@@ -26,7 +26,7 @@ class _TaskNextState extends State<TaskNextPage> {
     var screenWidthSize = screenWidth;
     return Scaffold(
       appBar: AppBar(
-        title: Text("手输号码"),
+        title: Text("Digite o número à mão"),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,8 +37,8 @@ class _TaskNextState extends State<TaskNextPage> {
               child: TextFormField(
                 initialValue: "",
                 decoration: InputDecoration(
-                  labelText: '无法扫描的号码',
-                  hintText: "请输入无法扫描的号码",
+                  labelText: 'Número não escaneável',
+                  hintText: "Insira um número não digitalizável",
                   errorText: "",
                   helperText: "helper",
                   border: UnderlineInputBorder(
@@ -56,19 +56,19 @@ class _TaskNextState extends State<TaskNextPage> {
           MaterialButton(
             onPressed: () {
               /*
-              检查扫码的箱子号码的状态
+              Verifique o status do número da caixa digitalizada
               */
               showCupertinoDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    content: Text("内容 : $_boxNumberInputed"),
+                    content: Text("contente : $_boxNumberInputed"),
                     actions: <Widget>[
                       CupertinoDialogAction(
                         onPressed: () {
                           Airoute.pop();
                         },
-                        child: Text("知道了"),
+                        child: Text("Entendido"),
                       ),
                     ],
                   );
@@ -80,7 +80,7 @@ class _TaskNextState extends State<TaskNextPage> {
             textColor: Colors.white,
             child: Tooltip(
               message: "",
-              child: Text("确认"),
+              child: Text("confirme"),
             ),
           ),
         ],

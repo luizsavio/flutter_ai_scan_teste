@@ -25,6 +25,7 @@ class _CustomSizeScannerPageState extends State<CustomSizeScannerPage> {
           ),
           Expanded(
             child: AppBarcodeScannerWidget.defaultStyle(
+              label: 'sssss',
               resultCallback: (String code) {
                 setState(() {
                   _code = code;

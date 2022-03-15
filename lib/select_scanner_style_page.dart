@@ -39,6 +39,20 @@ class _SelectScannerStyleState extends State<SelectScannerStylePage> {
                 child: Text("CustomSize Style"),
                 textTheme: ButtonTextTheme.accent,
               ),
+              RaisedButton(
+                onPressed: () {
+                  Airoute.pushNamed(routeName: "/TestingPage");
+                },
+                child: Text("Testing Page"),
+                textTheme: ButtonTextTheme.accent,
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Airoute.pushNamed(routeName: "/TaskNextPage");
+                },
+                child: Text("TaskNextPage"),
+                textTheme: ButtonTextTheme.accent,
+              ),
               Spacer(),
             ],
           ),

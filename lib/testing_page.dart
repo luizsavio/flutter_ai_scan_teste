@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:ai_barcode/ai_barcode.dart';
 import 'package:airoute/airoute.dart';
 import 'package:ai_awesome_message/ai_awesome_message.dart';
+import 'package:flutter_ai_scan_teste/custom_dialog.dart';
+import 'package:flutter_beep/flutter_beep.dart';
 
 class TestingPage extends StatefulWidget {
   @override
@@ -16,20 +20,34 @@ class _TestingState extends State<TestingPage> {
   @override
   void initState() {
     super.initState();
-    _scannerController = ScannerController(scannerResult: (result) {
-      //关闭识别
+    _scannerController = ScannerController(scannerResult: (result) async {
+      //desligue o reconhecimento
       _scannerController?.stopCameraPreview();
-      //提示信息
-      Airoute.push<Object>(
+      //informações imediatas
+      /*Airoute.push<Object>(
         route: AwesomeMessageRoute(
           awesomeMessage: AwesomeHelper.createAwesome(
               title: "Detect result", message: "$result"),
           theme: null,
           settings: RouteSettings(name: "/messageRouteName"),
         ),
-      );
-      //打开识别
-      _scannerController?.startCameraPreview();
+      );*/
+      showDialog(context: context, builder: (context) => const CustomDialog(title: 'Aviso', content: 'Batendo ponto... Aguarde!'),);
+      Future.delayed(Duration(seconds: 3),(){
+        FlutterBeep.beep();
+        Navigator.pop(context);
+        showDialog(context: context, builder: (context) => CustomDialog(title: 'Aviso', content: 'Ponto batido com Sucesso!'),);
+        Timer(Duration(seconds: 1), (){
+          Navigator.pop(context);
+          //identificação aberta
+          _scannerController?.startCameraPreview();
+        });
+      });
+
+
+
+
+
     });
   }
 
@@ -54,6 +72,14 @@ class _TestingState extends State<TestingPage> {
           children: <Widget>[
             MaterialButton(
               onPressed: () {
+                FlutterBeep.beep(false);
+              },
+              textColor: Colors.white,
+              color: Colors.blue,
+              child: Text("beep"),
+            ),
+            MaterialButton(
+              onPressed: () {
                 _scannerController?.startCamera();
               },
               textColor: Colors.white,
@@ -70,7 +96,7 @@ class _TestingState extends State<TestingPage> {
             ),
             MaterialButton(
               onPressed: () {
-                //停止相机预览
+                //parar a visualização da câmera
                 _scannerController?.stopCameraPreview();
               },
               textColor: Colors.white,
@@ -79,12 +105,21 @@ class _TestingState extends State<TestingPage> {
             ),
             MaterialButton(
               onPressed: () {
-                //释放相机
+                //liberar câmera
                 _scannerController?.stopCamera();
               },
               textColor: Colors.white,
               color: Colors.blue,
               child: Text("Stop/Release camera"),
+            ),
+            MaterialButton(
+              onPressed: () {
+                //flash
+                _scannerController?.toggleFlash();
+              },
+              textColor: Colors.white,
+              color: Colors.blue,
+              child: Text("Flash camera"),
             ),
             Container(
               width: 750,

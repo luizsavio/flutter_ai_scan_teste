@@ -13,7 +13,7 @@ class AppBarcodeScannerWidget extends StatefulWidget {
   ///
   AppBarcodeScannerWidget.defaultStyle({
     Function(String result)? resultCallback,
-    String label = '单号',
+    String label = 'número único',
   }) {
     _resultCallback = resultCallback ?? (String result) {};
     _label = label;
@@ -91,7 +91,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                     onPressed: () {
                       _requestMobilePermission();
                     },
-                    child: Text("请求权限"),
+                    child: Text("solicitar permissão"),
                   ),
                 ),
         ),
@@ -102,7 +102,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                     _useCameraScan = false;
                   });
                 },
-                child: Text("手动输入$_label"),
+                child: Text("Entrada manual$_label"),
               )
             : Row(
                 children: [
@@ -112,13 +112,13 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                         _useCameraScan = true;
                       });
                     },
-                    child: Text("扫描$_label"),
+                    child: Text("escaneamento$_label"),
                   ),
                   OutlineButton(
                     onPressed: () {
                       _resultCallback(_inputValue);
                     },
-                    child: Text("确定"),
+                    child: Text("Certo"),
                   ),
                 ],
               ),
